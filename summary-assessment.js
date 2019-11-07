@@ -59,7 +59,12 @@ function each(coll, f) {
   //wordLengths("hello its me") // [5,3,2]
   
   function wordLengths(str) {
-      // TODO: your code here 
+      // create an array of words from the input string 
+       var arr = str.split(' ');
+       //using map function to return new array with the length for each element
+       return map (arr,function(x,i){
+       return (x.length);
+      })
   }
   
   //=============================================================================
@@ -72,8 +77,14 @@ function each(coll, f) {
   // countOccurrences("hello, world!", "l"); // 3
   
   function countOccurrences(string, character) {
-      // your code is here
-  }
+      // create an array of words from the input string 
+      var arr = string.split(' ');
+     //using filter function to filter the character in the string
+      return filter (arr,function(x,i){
+       return x.indexOf(character) ;
+      })
+      }
+  
   
   //=============================================================================
   /*                                  Q3                                    */
@@ -84,7 +95,12 @@ function each(coll, f) {
   // wordsLongerThanThree("Hello Mad World") //["Hello", "World"]
   
   function wordsLongerThanThree(str) {
-      // TODO: your code here 
+      // create an array of words from the input string 
+      var arr=str.split(' ');
+       //using filter function to filter the longest string on the array
+     return filter (arr,function(x,i){
+        return x[i] > x[i + 1];
+      })
   }
   
   //=============================================================================
@@ -99,7 +115,14 @@ function each(coll, f) {
   //repeatString('dog', 3); // => 'dog' + 'dog' + 'dog' => 'dogdogdog'
   
   function repeatString(str, count) { 
-   // TODO: your code here 
+   // create an empty string for the output string
+   var result = ""
+   // if statement for the break condition of the recursion
+   if (count === 0){
+    return result;
+   }
+   // repeating the function untill reaching the break condition 
+   return str + repeatString(str, count - 1);
   } 
    
   
@@ -129,7 +152,23 @@ function each(coll, f) {
   // pizza.eatSlice();
   
   // Write your code here .....
-  
+  function makePizza (crust, size, numberOfSlice) {
+    return pizza = { ;
+    crust : crust,
+    size : size,
+    numberOfSlice : numberOfSlice,
+    addIngredients : ingredient, 
+    displayIngredients : displayIngredients
+   
+  }
+
+  var addIngredients = function (ingredient){
+    return this.ingredient = ingredient;
+  }
+
+  var displayIngredients = function() {
+    return alert("Your" + " " +  this.crust +  this.size +  this.numberOfSlice + " " + "slice pizza is done",2000)
+  }
   //=============================================================================
   /*                                  Q6                                      */
   //=============================================================================
@@ -153,9 +192,39 @@ function each(coll, f) {
   */
   
   // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
+  //Yes I am
+
+  // creating class ReadingList using OOP
   
-  // Write your code here .....
-  
+  function ReadingList(read, unRead, toRead, currentRead, readBooks){
+    // creating object to contain all the property
+    var list = {};
+      list.read = read;
+      list.unRead = unRead;
+      list.toRead = toRead;
+      list.currentRead = currentRead;
+      list.readBooks = readBooks;
+      list.AddBook = AddBook;
+      list.finishCurrentBook = finishCurrentBook;
+
+    return list;
+  }
+
+// creating function AddBook
+  var AddBook = function(book) {
+    this.toRead.push(book) ;
+    this.unRead = this.unRead + 1;
+  }
+
+// creating function finishCurrentBook
+  var finishCurrentBook = function() {
+    this.read = this.read + 1;
+    this.readBooks.push(this.currentRead);
+    this.toRead.unshift(this.currentRead);
+    this.unRead = this.unRead - 1
+  }
+
+
   //=============================================================================
   /*                                  Q7                                       */
   //=============================================================================
@@ -175,6 +244,23 @@ function each(coll, f) {
   //  safe('money','small') => "watch gold-bar money"
   
   // Write your code here .....
+  
+ var makeSafe = function (n) {
+    var init = n;
+    return function addItem(item, itemSize) { 
+      if ( init === 0 ) {
+        return "Can't fit"
+      } else if (itemSize == 'small') {
+          return init = init - 1; 
+        } else if (itemSize == 'medium') {
+          init = init - 2;
+        } else if (itemSize == 'big') {
+          init = init - 3;
+        } 
+      }
+        
+  }
+    
   
   //=============================================================================
   /*                                  Q8                                       */
@@ -216,10 +302,13 @@ function each(coll, f) {
   //================================================================================
   // Theoretical questions.
   // 1- In your own words,Why do we use Closures ?
-  
+  //to make the  global scope variable in the local scope of function so no one else will access to this variable
+  //and it will not update it untill we execute the function
   // 2- In OOP, what does "this" refer to ?
-  
+ //in OOP this refer to the methode of the main function
   // 3- What is jQuery?
-  
+  //it's library in javascript to make the coding more esier with less lines with code thanks to the methodes of jQuery
   // 4- what is the diffrence between Closure's methods and The OOP's methods?
+  //in closure every  methode will be executed each time when we invoke the main function even when we
+  // dont need that methode but in OOP we'll execute only the methode that we need
   
